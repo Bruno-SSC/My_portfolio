@@ -1,0 +1,39 @@
+@use 'variables'
+@use 'mixins'
+
+header
+    @include mixins.sizer
+header #loading
+    animation: is-rotating 8s infinite
+    width: 10rem
+    height: 10rem
+    border: 10px solid #011F3F
+    border-top-color: #FEF2BF
+    border-radius: 50%
+
+header #loading-text
+    position: relative
+    @include mixins.text($color: #011F3F)
+
+
+header #loading-text::before
+    content: attr(data-text)
+    position: absolute
+    top: 0
+    left: 0
+    width: 0
+    height: 100%
+    color: #FEF2BF
+    -webkit-text-stroke: 0px
+    overflow: hidden
+    animation: animate-welcome 8s linear infinite
+
+@keyframes animate-welcome
+    0%,10%,100%
+        width: 0
+    70%, 90%
+        width: 100%
+
+@keyframes is-rotating
+    to
+        transform: rotate(1turn)

@@ -1,0 +1,99 @@
+@use 'mixins'
+@use 'variables'
+
+main
+    @include mixins.sizer
+    h2
+        @include mixins.text($font-size: 3vw, $ls: 3px)
+    #project-container
+        @include mixins.sizer($flex-direction: row)
+        flex-wrap: wrap
+        max-width: 80vw
+        .project-div
+            @include mixins.div-project
+            transform-origin: bottom center
+            animation: animate 5s ease-in-out infinite
+            
+        .project-div:hover
+            cursor: pointer
+        .project-div::after
+            content: ''
+            position: absolute
+            top: 0
+            left: 0
+            height: 100%
+            width: 100%
+            background: linear-gradient(135deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0))
+            border-radius: 50%
+            z-index: -1
+        .project-div::before
+            // pseuelemento da entrada do pote
+            content: ''
+            position: absolute
+            top: -10px
+            width: 40%
+            height: 24px
+            border: 15px solid rgba(255, 255, 255, .3)
+            left: 50%
+            transform: translateX(-50%) 
+            border-radius: 50%
+        .liquid
+            position: absolute
+            top: 50%
+            left: 5px
+            right: 5px
+            bottom: 5px
+            background: #011F3F
+            border-bottom-left-radius: 150px
+            border-bottom-right-radius: 150px
+            transform-origin: top center
+            animation: animate-liquid 5s ease-in-out infinite
+        .liquid::before
+            content: ''
+            position: absolute
+            top: -10px
+            width: 100%
+            height: 20px
+            background: #1fa4e0
+            border-radius: 50%
+        .project-content
+            @include mixins.project-content
+            display: flex
+            justify-content: center
+            align-items: flex-start
+            
+            .content
+                position: relative
+                padding: 30px
+                
+                h3
+                    margin-top: 20px
+                    @include mixins.text($font-size: 1.5em, $ls: 1px)
+
+      
+      
+      
+        @keyframes animate
+                    0%
+                        transform: rotate(0deg)    
+                    25%
+                        transform: rotate(15deg)    
+                    50%
+                        transform: rotate(0deg)    
+                    75%
+                        transform: rotate(-15deg)    
+                    100%
+                        transform: rotate(0deg)    
+        @keyframes animate-liquid
+                    0%
+                        transform: rotate(0deg)    
+                    25%
+                        transform: rotate(-15deg)    
+                    50%
+                        transform: rotate(0deg)    
+                    75%
+                        transform: rotate(15deg)    
+                    100%
+                        filter: hue-rotate(360deg)
+                        transform: rotate(0deg)    
+        

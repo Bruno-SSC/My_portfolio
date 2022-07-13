@@ -1,0 +1,32 @@
+@use 'variables'
+
+@mixin sizer($flex-direction: column, $justify-content: center)
+    height: 100vh
+    width: 100%
+    display: flex
+    flex-direction: $flex-direction
+    justify-content: $justify-content
+    align-items: center
+    gap: 0px 164px
+
+@mixin text($font-size: 5vw, $ls: 15px, $color: #FEF2BF)
+    font-size: $font-size
+    color: $color
+    font-family: variables.$font
+    letter-spacing: $ls
+
+@mixin div-project
+    padding: 115px
+    position: relative
+    border-radius: 50%
+    border: 10px solid rgba(255, 255, 255, .3)
+  
+
+@mixin project-content
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    border-radius: 50%
+    
